@@ -45,6 +45,14 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
         mp_drawing.draw_landmarks(image, results.left_hand_landmarks, mp_holistic.HAND_CONNECTIONS)
 
         # Pose Detections
+        #to access specific landmark/keypoint
+
+        for id, lm in enumerate(results.pose_landmarks.landmark):
+            h, w, c = image.shape
+            cx, cy = int(lm.x * w), int(lm.y * h)
+
+            if id == 13:
+                cv2.circle(image, (cx, cy), 25, (255,255,0), cv2.FILLED)
         
         mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_holistic.POSE_CONNECTIONS)
 
