@@ -5,7 +5,7 @@ mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 mp_holistic = mp.solutions.holistic
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture('/home/neosoft/Downloads/Pose_estimation-main/e.mp4')
 
 # Initiating holistic model
 
@@ -39,7 +39,6 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
                     mp_drawing.DrawingSpec((0, 255, 0), 4, 2)
                     )
 
-
         # Left Hand
         
         mp_drawing.draw_landmarks(image, results.left_hand_landmarks, mp_holistic.HAND_CONNECTIONS)
@@ -51,7 +50,7 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
             h, w, c = image.shape
             cx, cy = int(lm.x * w), int(lm.y * h)
 
-            if id == 13:
+            if id == 28:
                 cv2.circle(image, (cx, cy), 25, (255,255,0), cv2.FILLED)
         
         mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_holistic.POSE_CONNECTIONS)
